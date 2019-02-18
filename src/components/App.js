@@ -2,13 +2,14 @@ import React from 'react';
 import SearchBar from './SearchBar';
 import unsplash from '../api/unsplash';
 import ImageList from './ImageList';
+
 class App extends React.Component {
   state={ images:[] };
 
   onSearchSubmit= async term=>{
     const response = await unsplash.get('/search/photos', {
-      params:{ query: term },
-      
+      params:{ query: term }, 
+      //use the path on unsplash for image searching
     });
 
     this.setState({images:response.data.results});
